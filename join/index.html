@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>NEIGHBORHOOD WARZONE</title>
+<!--
+  Join page for the WhatsApp link (D36): https://mikinzon.github.io/warzone-server/join/?code=ABC123
+  Opens the game straight into that game's lobby (warzone://join/ABC123); without the game, shows how to install it.
+  No tracking, no outside scripts or fonts: only the code in the address is read. Source: Tools/Server/site/ in the game repo.
+-->
+<style>
+  :root { --bg:#07090D; --surface:#0F141B; --raised:#18212C; --stroke:#2A3A4C; --accent:#22D3EE; --on-accent:#041015;
+          --warn:#FBBF24; --text:#E6EDF3; --muted:#8B98A8; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif; }
+  main { max-width:520px; margin:0 auto; padding:28px 16px 40px; }
+  h1 { font-size:30px; letter-spacing:3px; color:var(--accent); text-align:center; margin:8px 0 4px; direction:ltr;
+       text-shadow:0 0 18px rgba(34,211,238,.55); }
+  .tag { text-align:center; color:var(--muted); margin:0 0 24px; }
+  .card { background:var(--surface); border:1px solid var(--stroke); border-radius:16px; padding:18px; margin:14px 0; }
+  .code { font-size:44px; font-weight:800; letter-spacing:10px; text-align:center; color:var(--accent); direction:ltr; margin:4px 0 12px; }
+  .btn { display:block; width:100%; text-align:center; padding:16px; border-radius:14px; font-size:20px; font-weight:700;
+         text-decoration:none; border:0; cursor:pointer; }
+  .primary { background:var(--accent); color:var(--on-accent); box-shadow:0 0 24px rgba(34,211,238,.45); }
+  .secondary { background:var(--raised); color:var(--text); border:1px solid var(--stroke); margin-top:10px; }
+  h2 { font-size:19px; margin:0 0 10px; color:var(--warn); }
+  ol { margin:0; padding-inline-start:22px; } li { margin:6px 0; }
+  .en { direction:ltr; text-align:left; color:var(--muted); font-size:14px; margin-top:10px; }
+  .muted { color:var(--muted); font-size:14px; }
+  .hidden { display:none; }
+</style>
+</head>
+<body>
+<main>
+  <h1>NEIGHBORHOOD<br>WARZONE</h1>
+  <p class="tag">משחק קבוצות ברחובות השכונה · Team battle on your own streets</p>
+
+  <section id="join" class="card hidden">
+    <div class="muted" style="text-align:center">קוד המשחק · Game code</div>
+    <div id="code" class="code"></div>
+    <a id="open" class="btn primary" href="#">פתיחת המשחק · Open the game</a>
+    <p class="muted" style="margin:12px 0 0">המשחק נפתח ומצטרף לבד. אם לא קרה כלום: פתח/י את המשחק, הקש/י "הצטרפות למשחק" והקלד/י את הקוד.</p>
+    <p class="en">The game opens and joins by itself. If nothing happens: open the game, tap JOIN A GAME and type the code.</p>
+  </section>
+
+  <section id="install" class="card">
+    <h2>אין לך עדיין את המשחק? · Don't have the game yet?</h2>
+    <a class="btn secondary" href="../download/NeighborhoodWarZone.apk" download>הורדת המשחק (אנדרואיד) · Download (Android)</a>
+    <ol style="margin-top:14px">
+      <li>הקש/י על הקובץ שהורד ובחר/י "התקנה".</li>
+      <li>אם מופיע שהטלפון לא מורשה להתקין ממקור זה: "הגדרות" &gt; "אפשר מהמקור הזה", וחזור/י אחורה.</li>
+      <li>בסמסונג, אם "חוסם אוטומטי" (Auto Blocker) חוסם: הגדרות &gt; אבטחה ופרטיות &gt; חוסם אוטומטי &gt; כבוי. אפשר להדליק שוב אחרי ההתקנה.</li>
+      <li>אם Google Play Protect מזהיר: "פרטים נוספים" &gt; "התקנה בכל זאת".</li>
+      <li>פתח/י את המשחק ואשר/י מיקום ומצלמה. אחר כך הקש/י שוב על הקישור.</li>
+    </ol>
+    <p class="muted">כדאי לבקש מהורה לעזור. גרסת ניסיון לחברים: לאנדרואיד בלבד.</p>
+    <div class="en">
+      <ol>
+        <li>Tap the downloaded file and choose "Install".</li>
+        <li>If the phone isn't allowed to install from this source: "Settings" &gt; "Allow from this source", then back.</li>
+        <li>On Samsung, if Auto Blocker blocks it: Settings &gt; Security and privacy &gt; Auto Blocker &gt; off (turn it back on after).</li>
+        <li>If Google Play Protect warns: "More details" &gt; "Install anyway".</li>
+        <li>Open the game, allow location and camera, then tap the link again.</li>
+      </ol>
+      Ask a parent to help. Test version for friends, Android only.
+    </div>
+  </section>
+</main>
+<script>
+  (function () {
+    var code = (new URLSearchParams(location.search).get("code") || "").trim().toUpperCase();
+    if (!/^[A-Z0-9]{6}$/.test(code)) return; // no game code: only the install help shows
+
+    document.getElementById("join").classList.remove("hidden");
+    document.getElementById("code").textContent = code;
+    var fallback = location.origin + location.pathname + "?code=" + code + "#install";
+    var android = /Android/i.test(navigator.userAgent);
+    // Chrome / Samsung Internet open the installed game from an intent link; without it, they come back here.
+    var link = android
+      ? "intent://join/" + code + "#Intent;scheme=warzone;package=com.kandk.neighborhoodwarzone;S.browser_fallback_url=" + encodeURIComponent(fallback) + ";end"
+      : "warzone://join/" + code;
+    var open = document.getElementById("open");
+    open.href = link;
+    if (android && location.hash !== "#install") location.href = link; // try at once; the button is there if blocked
+  })();
+</script>
+</body>
+</html>
