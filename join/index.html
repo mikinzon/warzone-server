@@ -80,7 +80,7 @@
     var android = /Android/i.test(navigator.userAgent);
     // Chrome / Samsung Internet open the installed game from an intent link; without it, they come back here.
     var link = android
-      ? "intent://join/" + code + "#Intent;scheme=warzone;package=com.kandk.neighborhoodwarzone;S.browser_fallback_url=" + encodeURIComponent(fallback) + ";end"
+      ? "intent://join/" + code + "#Intent;scheme=warzone;package=com.kkzone.neighborhoodwarzone;S.browser_fallback_url=" + encodeURIComponent(fallback) + ";end"
       : "warzone://join/" + code;
     var open = document.getElementById("open");
     open.href = link;
