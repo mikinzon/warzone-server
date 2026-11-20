@@ -1,0 +1,31 @@
+# D78: GitHub checks every 15 minutes that the live game server answers; when it doesn't, the run fails and GitHub
+# emails the owner (the account that pushed this file; GitHub's default "failed workflows" notification).
+# Free: public repositories have unlimited Actions minutes. Source of
+#   .github/workflows/uptime-check.yml in the public repo mikinzon/warzone-server
+# (copied there by hand into Tools/Server/address-repo, then pushed with the owner's OK).
+# Notes: GitHub may start scheduled runs some minutes late, and turns them off after 60 days with no change in the
+# repository (it emails first; any publish, or "Enable workflow" in the Actions tab, turns it back on).
+name: Game server up
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  health:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: The game server answers /health
+        run: |
+          url="https://151-145-89-146.sslip.io/health"
+          # Three tries, 30 s apart, so one dropped request doesn't send an email.
+          for try in 1 2 3; do
+            if [ "$(curl -sS --max-time 15 "$url" || true)" = "ok" ]; then echo "Up: $url"; exit 0; fi
+            [ "$try" -lt 3 ] && sleep 30
+          done
+          echo "::error::The game server does not answer: $url. Check it: Tools/Server/OracleServer.ps1 -Action status"
+          exit 1
