@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Delete my data · NEIGHBORHOOD WARZONE</title>
+<!--
+  Google Play's "data deletion" web page: how to delete a player's data without the app. DRAFT (2026-11-19), not
+  published: waits for the owner's OK. Same facts as the privacy page (../privacy/) and the server's delete code (D38, D70).
+  Source: Tools/Server/site/ in the game repo; published to mikinzon.github.io/warzone-server/delete/.
+-->
+<style>
+  :root { --bg:#07090D; --surface:#0F141B; --stroke:#2A3A4C; --accent:#22D3EE; --warn:#FBBF24; --text:#E6EDF3; --muted:#8B98A8; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif; }
+  main { max-width:720px; margin:0 auto; padding:28px 16px 48px; }
+  h1 { font-size:28px; letter-spacing:3px; color:var(--accent); text-align:center; margin:8px 0 4px; direction:ltr;
+       text-shadow:0 0 18px rgba(34,211,238,.55); }
+  .tag { text-align:center; color:var(--muted); margin:0 0 20px; }
+  .card { background:var(--surface); border:1px solid var(--stroke); border-radius:16px; padding:18px; margin:14px 0; }
+  h2 { font-size:20px; margin:0 0 10px; color:var(--warn); }
+  h3 { font-size:16px; margin:14px 0 4px; color:var(--accent); }
+  p { margin:6px 0; } ol, ul { margin:6px 0; padding-inline-start:22px; } li { margin:5px 0; }
+  .muted { color:var(--muted); font-size:14px; }
+  .en { direction:ltr; text-align:left; }
+  a { color:var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <h1>NEIGHBORHOOD<br>WARZONE</h1>
+  <p class="tag">מחיקת המידע שלך · עודכן ב-19 בנובמבר 2026</p>
+
+  <section class="card">
+    <h2>הדרך המהירה: מתוך המשחק</h2>
+    <ol>
+      <li>פותחים את המשחק ונכנסים ל<b>אפשרויות</b>.</li>
+      <li>לוחצים <b>מחיקת המידע שלי</b>, ואז <b>מחיקה</b>.</li>
+    </ol>
+    <p>המחיקה מיידית, ואי אפשר לבטל אותה.</p>
+  </section>
+
+  <section class="card">
+    <h2>בלי המשחק: בקשה במייל</h2>
+    <p>אם המשחק כבר לא מותקן אצלך, שלח/י מייל ל-<a href="mailto:neighborhoodwarzone@gmail.com?subject=Delete%20my%20data" dir="ltr">neighborhoodwarzone@gmail.com</a> עם הנושא "מחיקת מידע", וכתוב/י:</p>
+    <ul>
+      <li>הכינוי שלך במשחק,</li>
+      <li>קוד השחזור שלך, אם יצרת אחד (אפשרויות &gt; שמירת ההתקדמות), או קוד של משחק ששיחקת בו ובערך מתי.</li>
+    </ul>
+    <p>אנחנו לא אוספים מייל, טלפון או שם אמיתי, ולכן הפרטים האלה עוזרים לנו למצוא את החשבון הנכון. נמחק תוך 30 יום ונענה במייל. הורה יכול לבקש מחיקה בשביל ילד/ה באותה דרך.</p>
+  </section>
+
+  <section class="card">
+    <h2>מה נמחק ומה נשאר</h2>
+    <h3>נמחק</h3>
+    <ul>
+      <li>הכינוי, קבוצת הגיל, הדרגה, ה-XP, המשימות והסטטיסטיקות.</li>
+      <li>ציון ההגינות, החסימות שעשית, ההצבעות והמשוב שלך.</li>
+      <li>המזהה הסודי של הטלפון: השרת שוכח אותו.</li>
+    </ul>
+    <h3>נשאר</h3>
+    <ul>
+      <li>רעיונות שכתבת: נשארים בלי השם שלך.</li>
+      <li>דיווחים של שחקנים אחרים עליך: עד שהם פגים, 30 יום לכל היותר.</li>
+      <li>סטטיסטיקות אנונימיות (רק מספר כמו P-12, בלי כינוי), שאי אפשר לקשר אליך.</li>
+    </ul>
+    <p class="muted">המיקום המדויק ותמונות ה"ירי" לא נשמרים מלכתחילה (חוץ מתמונה שדווחה, עד 30 יום). פרטים מלאים: <a href="../privacy/">מדיניות הפרטיות</a>.</p>
+  </section>
+
+  <section class="card en" lang="en" dir="ltr">
+    <h2>Delete your data (English)</h2>
+    <p class="muted">Last updated: 19 November 2026</p>
+    <h3>In the game (fastest)</h3>
+    <p>Open the game, go to <b>Options</b>, tap <b>Delete my data</b>, then <b>DELETE</b>. It happens at once and can't be undone.</p>
+    <h3>Without the game</h3>
+    <p>Email <a href="mailto:neighborhoodwarzone@gmail.com?subject=Delete%20my%20data">neighborhoodwarzone@gmail.com</a> with the subject "Delete my data" and give your nickname, plus your recovery code if you made one (Options &gt; Save my progress) or the code of a game you played and roughly when. We don't collect email, phone numbers or real names, so this helps us find the right account. We delete it within 30 days and reply by email. A parent can ask for a child's data the same way.</p>
+    <h3>What is deleted</h3>
+    <p>Your nickname, age group, level, XP, missions and stats, fair-play score, the blocks you made, your votes and feedback, and the server forgets your phone's secret player number.</p>
+    <h3>What stays</h3>
+    <p>Ideas you wrote stay without your name. Reports by other players about you stay until they expire (at most 30 days). Anonymous statistics (a number like P-12, no nickname) stay and can't be linked to you. Precise location and shot photos are never stored (except a reported photo, up to 30 days). Full details: <a href="../privacy/">privacy policy</a>.</p>
+  </section>
+</main>
+</body>
+</html>
